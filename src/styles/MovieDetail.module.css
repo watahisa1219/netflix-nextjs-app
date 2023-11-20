@@ -1,0 +1,24 @@
+.movieContainer {
+  display: flex;
+}
+
+.matchText {
+  color: #53d853;
+  font-size: 1.2rem;
+  margin: 30px 0px 10px 30px;
+}
+
+.movieDescription {
+  color: #fff;
+  width: 45rem;
+  line-height: 1.3;
+  font-size: 1.2rem;
+  max-width: 60vw;
+  margin: 30px 0px 30px 30px;
+}
+
+.genres {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 30px 0px 30px 60px;
+}

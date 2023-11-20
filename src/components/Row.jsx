@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import axios from "../modules/axios";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
-import { API_KEY } from "../modules/request";
+import { API_KEY, feachGenre } from "../modules/request";
 import Styles from "../styles/Row.module.css";
 
 const base_url = "https://image.tmdb.org/t/p/original";
@@ -11,18 +12,24 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
 
   // stateの初期化
   const [movies, setMovies] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
+  const router = useRouter();
 
   // URL更新時の処理
   useEffect(() => {
     (async() => {
       const request = await axios.get(fetchUrl);
       setMovies(request.data.results);
+
+      const requestGenre = await axios.get(feachGenre);
+      setGenres(requestGenre.data.genres);
     })();
   }, [fetchUrl]);
 
   // 作品押下時、再生の処理
   const handleClick = async (movie) => {
+
     // 再度動画クリック時、再表示されるようにtrailerUrlの初期化
     if (trailerUrl) {
       setTrailerUrl("");
@@ -48,6 +55,24 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
           setTrailerUrl(urlParams.get("v"));
         }
       })
+
+    // filterにてgenreのListを繰り返し、
+    // クリックしたmovieのidsが含まれている場合のみ変数genreNameに格納
+    const genreName = genres.filter((genre) =>
+      movie.genre_ids.includes(genre.id)
+    ).map((genre) =>
+      genre.name
+    )
+
+    // 詳細ページに遷移
+    router.push({
+      pathname:"/detail",
+      query:{
+        movie: JSON.stringify(movie),
+        genreName:JSON.stringify(genreName)
+      }
+    });
+
   };
 
   // 再生画面の設定値
@@ -73,6 +98,7 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
             src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
             alt={movie.name}
             onClick={() => handleClick(movie)}
+            // onMouseOver={onHover}
           />
         ))}
       </div>

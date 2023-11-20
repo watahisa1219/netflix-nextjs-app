@@ -11,14 +11,17 @@ const App = () => {
       <Nav />
       <Banner />
       <Row
+        title="マイリスト"
+        fetchUrl={requests.feactComedyMovies}
+        />
+      <Row
         title="Netflix オリジナル作品"
         fetchUrl={requests.feachNetflixOriginals}
         isLargeRow
       />
-      <Row title="マイリスト" fetchUrl={requests.feactTopRated} />
-      <Row title="新作" fetchUrl={requests.feactComedyMovies} />
+      <Row title="新作" fetchUrl={requests.feactTopRated} />
       <Row title="人気急上昇の作品" fetchUrl={requests.feactRomanceMovies} />
-      <Row title="もう一度観る" fetchUrl={requests.feactDocumentMovies} />
+      <Row title="もう一度観る" fetchUrl={requests.feactHorrorMovies} />
     </div>
   );
 }
