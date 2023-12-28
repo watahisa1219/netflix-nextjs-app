@@ -22,7 +22,7 @@ export const Banner = () => {
     fetchData();
   }, []);
 
-  // descriptionの切り捨てよう関数
+  // movie説明文の省略処理
   const truncate = (str, n) => {
     // undefinedを弾く
     if (str !== undefined) {
@@ -36,7 +36,7 @@ export const Banner = () => {
       style={{
         color: "#fff",
         objectFit: "contain",
-        height: "448px",
+        height: "560px",
         backgroundSize: "cover",
         backgroundImage: `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`,
         backgroundPosition: "center",
