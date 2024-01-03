@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Styles from "../styles/AppDetail.module.css";
-import { MovieDetail } from "./MovieDetail";
+import Styles from "./styles/AppDetail.module.css";
+import { MovieDetail } from "./components/MovieDetail";
 
 const AppDetail = () => {
   // stateの初期化
@@ -9,8 +9,6 @@ const AppDetail = () => {
 
   // レンダリング完了時にURLを取得
   useEffect(() => {
-    console.log('window')
-    console.log(window)
     if (typeof window !== "undefined") {
       // URLを取得
       let url = new URL(window.location.href);
@@ -25,7 +23,7 @@ const AppDetail = () => {
       <MovieDetail
         movie={movie}
         genres={genres}
-        />
+      />
     </div>
   );
 }

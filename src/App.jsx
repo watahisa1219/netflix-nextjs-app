@@ -1,9 +1,9 @@
 import React from "react";
-import { Row } from "./Row";
-import { Banner } from "./Banner";
-import { Nav } from "./Nav";
-import { requests } from "../modules/request";
-import Styles from "../styles/App.module.css";
+import { Row } from "./components/Row";
+import { Banner } from "./components/Banner";
+import { Nav } from "./components/Nav";
+import { requests } from "./modules/request";
+import Styles from "./styles/App.module.css";
 
 const App = () => {
   return (

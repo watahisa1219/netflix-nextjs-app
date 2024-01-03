@@ -29,8 +29,6 @@ export const MovieDetail = ({movie, genres}) => {
         setTrailerUrl(trailerurl.data.results[0].key);
       } catch (e) {
         console.log(e);
-      } finally {
-        console.log("例外実行");
       }
     }
     // movieオブジェクトから予告URLの検索
@@ -43,9 +41,6 @@ export const MovieDetail = ({movie, genres}) => {
           setTrailerUrl(urlParams.get("v"));
         }
       })
-
-    console.log("trailerUrl")
-    console.log(trailerUrl)
   };
 
   // 再生画面の設定値

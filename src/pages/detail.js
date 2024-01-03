@@ -1,10 +1,9 @@
-import AppDetail from '../components/AppDetail';
+import AppDetail from '../AppDetail';
 
 export default function detail() {
-
-return (
-  <>
-  <AppDetail />
-  </>
-)
+  return (
+    <>
+      <AppDetail />
+    </>
+  )
 }
