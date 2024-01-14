@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 import Styles from "../styles/Nav.module.css";
 
 export const Nav = () => {
 
   // stateの初期化 ヘッダー表示の処理設定をfalseに指定
   const [show, setShow] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleShow = () => {
@@ -19,17 +21,26 @@ export const Nav = () => {
     window.addEventListener("scroll", handleShow);
   }, []);
 
+    // 作品押下時の処理
+    const accountClick = async () => {
+      //accountページに遷移
+      router.push({
+        pathname:"/account"
+      });
+    };
+
   return (
     <div className={`${Styles.Nav} ${show && Styles.NavBlack}`}>
       <img
         className={Styles.NavLogo}
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png"
+        src="/image/NetflixLogo.png"
         alt="Netflix Logo"
       />
       <img
-        className={Styles.NavAvater}
-        src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png"
-        alt="Avatar"
+        className={Styles.NavAccount}
+        src="/image/emerald.jpg"
+        alt="account"
+        onClick={() => accountClick()}
       />
     </div>
   );

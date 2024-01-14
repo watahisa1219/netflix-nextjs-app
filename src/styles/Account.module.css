@@ -1,0 +1,40 @@
+.HeaderLogoContainer {
+  margin-top: 20px;
+}
+
+.HeaderLogo {
+  position: fixed;
+  left: 20px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.QuestionContainer {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+}
+
+.AccountQuestion {
+  padding: 0px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  font-size: 25px;
+}
+
+.AccountContainer {
+  display: flex;
+  justify-content: center;
+  column-gap: 60px;
+}
+
+.AccountPictureContainer {
+  width: 150px;
+  height: 150px;
+}
+
+.AccountNameContainer {
+  display: flex;
+  justify-content: center;
+}

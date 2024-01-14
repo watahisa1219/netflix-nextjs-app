@@ -1,5 +1,4 @@
-// TMDBのAPIKEY
-export const API_KEY = "b091e7fc61a2ef93d5f345147ba522ea";
+export const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY
 export const feachGenre = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
 
 export const action = {

@@ -27,8 +27,8 @@ export const MovieDetail = ({movie, genres}) => {
         let trailerurl = axiosInstance.get(`/movie/${movie.id}/videos?api_key=`+ API_KEY);
         //動画の配列の0番目のkeyにYouTubeのidが入っているので代入
         setTrailerUrl(trailerurl.data.results[0].key);
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
     }
     // movieオブジェクトから予告URLの検索
@@ -58,7 +58,7 @@ export const MovieDetail = ({movie, genres}) => {
       style={{
         color: "#fff",
         objectFit: "contain",
-        height: "75vh",
+        height: "560px",
         backgroundSize: "cover",
         backgroundImage: `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`,
         backgroundPosition: "center",

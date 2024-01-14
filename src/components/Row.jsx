@@ -24,7 +24,7 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
     })();
   }, [fetchUrl]);
 
-  // 作品押下時、再生の処理
+  // 作品押下時の処理
   const handleClick = async (movie) => {
 
     // filterにてgenreのListを繰り返し、

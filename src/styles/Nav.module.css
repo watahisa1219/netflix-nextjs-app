@@ -25,9 +25,13 @@
   object-fit: contain;
 }
 
-.NavAvater {
+.NavAccount {
   position: fixed;
   right: 20px;
   width: 30px;
   object-fit: contain;
+}
+
+.NavAccount:hover {
+  transform: scale(1.09);
 }
