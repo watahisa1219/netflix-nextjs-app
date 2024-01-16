@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { common, playOption } from "../modules/common";
+import { API_KEY } from "../modules/request";
 import Styles from "../styles/MovieDetail.module.css";
 import PlayButton from "./PlayButton";
 import axios from 'axios'
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
-import { API_KEY } from "../modules/request";
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
@@ -12,9 +13,6 @@ import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 export const MovieDetail = ({movie, genres}) => {
   // stateの初期化
   const [trailerUrl, setTrailerUrl] = useState("");
-  const axiosInstance = axios.create({
-    baseURL:"https://api.themoviedb.org/3",
-  });
 
   // 再生ボタンクリック後
   const playButtonClick = (movie) => {
@@ -24,7 +22,7 @@ export const MovieDetail = ({movie, genres}) => {
     } else {
       try {
         //動画を取得
-        let trailerurl = axiosInstance.get(`/movie/${movie.id}/videos?api_key=`+ API_KEY);
+        let trailerurl = axios.get(`${TRAILER_BASE_URL}/movie/${movie.id}/videos?api_key=`+ API_KEY);
         //動画の配列の0番目のkeyにYouTubeのidが入っているので代入
         setTrailerUrl(trailerurl.data.results[0].key);
       } catch (error) {
@@ -43,15 +41,6 @@ export const MovieDetail = ({movie, genres}) => {
       })
   };
 
-  // 再生画面の設定値
-  const opts = {
-    width: "1300",
-    height: "800",
-    playerVars: {
-      autoplay: 1,
-    },
-  };
-
   return (
     <div
       className="Banner"
@@ -60,7 +49,7 @@ export const MovieDetail = ({movie, genres}) => {
         objectFit: "contain",
         height: "560px",
         backgroundSize: "cover",
-        backgroundImage: `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`,
+        backgroundImage: `url("${common.TMDB_BASE_URL}${movie.backdrop_path}")`,
         backgroundPosition: "center",
       }}
     >
@@ -84,7 +73,7 @@ export const MovieDetail = ({movie, genres}) => {
         <div className={Styles.movieFadeBottom}> </div>
         <div className={Styles.movieContainer}>
           <div className={Styles.movieLeftColumn}>
-            <p className={Styles.matchText}>98% match</p>
+            <p className={Styles.matchText}>{common.MATCH}% match</p>
             <p className={Styles.movieDescription}>{movie.overview}</p>
           </div>
           <div className={Styles.movieRightColumn}>
@@ -92,7 +81,7 @@ export const MovieDetail = ({movie, genres}) => {
           </div>
         </div>
         <div className={Styles.videoContainer}>
-          <div className={Styles.videoPlayer}>{trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}</div>
+          <div className={Styles.videoPlayer}>{trailerUrl && <YouTube videoId={trailerUrl} opts={playOption} />}</div>
         </div>
       </div>
     </div>

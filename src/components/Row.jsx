@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import axios from "../modules/axios";
 import { feachGenre } from "../modules/request";
+import { common } from "../modules/common";
 import Styles from "../styles/Row.module.css";
-
-const base_url = "https://image.tmdb.org/t/p/original";
 
 export const Row = ({ title, fetchUrl, isLargeRow }) => {
 
@@ -26,7 +25,6 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
 
   // 作品押下時の処理
   const handleClick = async (movie) => {
-
     // filterにてgenreのListを繰り返し、
     // クリックしたmovieのidsが含まれている場合のみ変数genreNameに格納
     const genreName = genres.filter((genre) =>
@@ -56,7 +54,7 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
             // { 真偽 && JSXの記述 }
             className={`${Styles.RowPoster} ${isLargeRow && Styles.RowPosterLarge}`}
             // { 真偽 ? true時のJSXの記述 : false時のJSXの記述 }
-            src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+            src={`${common.TMDB_BASE_URL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
             alt={movie.name}
             onClick={() => handleClick(movie)}
           />

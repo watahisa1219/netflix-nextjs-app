@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../modules/axios";
 import { requests } from "../modules/request";
+import { common } from "../modules/common";
 import Styles from "../styles/Banner.module.css";
 
 export const Banner = () => {
@@ -38,7 +39,7 @@ export const Banner = () => {
         objectFit: "contain",
         height: "560px",
         backgroundSize: "cover",
-        backgroundImage: `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`,
+        backgroundImage: `url("${common.TMDB_BASE_URL}${movie.backdrop_path}")`,
         backgroundPosition: "center",
       }}
     >

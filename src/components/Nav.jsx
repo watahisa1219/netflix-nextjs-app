@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
+import { common } from "../modules/common";
 import Styles from "../styles/Nav.module.css";
 
 export const Nav = () => {
@@ -10,8 +11,8 @@ export const Nav = () => {
 
   useEffect(() => {
     const handleShow = () => {
-      // 縦軸のスクロールが100を超えた場合にヘッダーを表示
-      if (window.scrollY > 100) {
+      // 縦軸のスクロールが設定値を超えた場合にヘッダーを表示
+      if (window.scrollY > common.OVER_SCROLL_Y_BALUE) {
         setShow(true);
       } else {
         // ヘッダーを非表示
