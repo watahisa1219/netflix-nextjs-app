@@ -11,14 +11,18 @@ export const Banner = () => {
 
   useEffect(() => {
     const fetchData = async() => {
-      const request = await axios.get(requests.feachNetflixOriginals);
-
-      //apiからランダムで値を取得
-      setMovie(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
-        ]
-      );
+      try {
+        const request = await axios.get(requests.feachNetflixOriginals);
+        //apiからランダムで値を取得
+        setMovie(
+          request.data.results[
+            Math.floor(Math.random() * request.data.results.length - 1)
+          ]
+        );
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        fetchData();
+      }
     }
     fetchData();
   }, []);
@@ -29,6 +33,11 @@ export const Banner = () => {
     if (str !== undefined) {
       return str.length > n ? str.substr(0, n - 1) + "..." : str;
     }
+  }
+
+  // APIのデータが無い場合
+  if (!movie) {
+    return null;
   }
 
   return (
