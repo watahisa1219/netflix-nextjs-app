@@ -1,0 +1,82 @@
+.movieContents {
+  padding-top: 200px;
+  height: 190px;
+}
+
+.movieTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  padding-bottom: 0.3rem;
+  margin-left: 20px;
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 40%);
+}
+
+.movieButtonContainer {
+  display: flex;
+  margin-left: 20px;
+}
+
+.movieFadeBottom {
+  height: 16rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+}
+
+.movieContainer {
+  display: flex;
+}
+
+.matchText {
+  color: #53d853;
+  font-size: 1.2rem;
+  margin: 30px 0px 10px 30px;
+}
+
+.movieDescription {
+  color: #fff;
+  width: 45rem;
+  line-height: 1.3;
+  font-size: 1.2rem;
+  max-width: 60vw;
+  margin: 30px 0px 30px 30px;
+}
+
+.genres {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 30px 0px 30px 60px;
+}
+
+.videoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.iconContainer {
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 37px; /* アイコンコンテナの幅 */
+  height: 37px; /* アイコンコンテナの高さ */
+  background-color: rgb(0 0 0 / 40%); /* アイコンコンテナの背景色 */
+  border-radius: 50%; /* アイコンコンテナの角丸 */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* ホバー時のトランジション */
+  border: 2px solid #fff; /* 外側の白い線 */
+}
+
+.importIcon {
+  font-size: 24px; /* アイコンのサイズ */
+  color: #fff; /* アイコンの色 */
+  transition: transform 0.3s ease; /* ホバー時のトランジション */
+}
+
+.iconContainer:hover {
+  background-color: rgb(161 160 160 / 40%); /* ホバー時の背景色 */
+}
+
