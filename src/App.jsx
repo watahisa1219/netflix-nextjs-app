@@ -12,16 +12,16 @@ const App = () => {
       <Banner />
       <Row
         title="マイリスト"
-        fetchUrl={requests.feactComedyMovies}
+        fetchUrl={requests.fetchComedyMovies}
         />
       <Row
         title="Netflix オリジナル作品"
-        fetchUrl={requests.feachNetflixOriginals}
+        fetchUrl={requests.fetchNetflixOriginals}
         isLargeRow
       />
-      <Row title="新作" fetchUrl={requests.feactTopRated} />
-      <Row title="人気急上昇の作品" fetchUrl={requests.feactRomanceMovies} />
-      <Row title="もう一度観る" fetchUrl={requests.feactHorrorMovies} />
+      <Row title="新作" fetchUrl={requests.fetchTopRated} />
+      <Row title="人気急上昇の作品" fetchUrl={requests.fetchRomanceMovies} />
+      <Row title="もう一度観る" fetchUrl={requests.fetchHorrorMovies} />
     </div>
   );
 }

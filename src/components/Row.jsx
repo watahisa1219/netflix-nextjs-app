@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import axios from "../modules/axios";
-import { feachGenre } from "../modules/request";
+import { fetchGenre } from "../modules/request";
 import { common } from "../modules/common";
 import Styles from "../styles/Row.module.css";
 
@@ -18,7 +18,7 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
       const request = await axios.get(fetchUrl);
       setMovies(request.data.results);
 
-      const requestGenre = await axios.get(feachGenre);
+      const requestGenre = await axios.get(fetchGenre);
       setGenres(requestGenre.data.genres);
     })();
   }, [fetchUrl]);
@@ -51,9 +51,9 @@ export const Row = ({ title, fetchUrl, isLargeRow }) => {
         {movies.map((movie) => (
           <img
             key={movie.id}
-            // { 真偽 && JSXの記述 }
+            // { largeサイズと通常サイズの画像クラス名の分岐 }
             className={`${Styles.RowPoster} ${isLargeRow && Styles.RowPosterLarge}`}
-            // { 真偽 ? true時のJSXの記述 : false時のJSXの記述 }
+            // { largeサイズと通常サイズの画像クラスパスの分岐 }
             src={`${common.TMDB_BASE_URL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
             alt={movie.name}
             onClick={() => handleClick(movie)}

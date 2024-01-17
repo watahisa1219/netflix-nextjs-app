@@ -22,9 +22,9 @@ export const MovieDetail = ({movie, genres}) => {
     } else {
       try {
         //動画を取得
-        let trailerurl = axios.get(`${TRAILER_BASE_URL}/movie/${movie.id}/videos?api_key=`+ API_KEY);
+        let trailerUrl = axios.get(`${TRAILER_BASE_URL}/movie/${movie.id}/videos?api_key=`+ API_KEY);
         //動画の配列の0番目のkeyにYouTubeのidが入っているので代入
-        setTrailerUrl(trailerurl.data.results[0].key);
+        setTrailerUrl(trailerUrl.data.results[0].key);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -57,6 +57,7 @@ export const MovieDetail = ({movie, genres}) => {
         <h1 className={Styles.movieTitle}>
           {movie.title || movie.name || movie.orignal_name}
         </h1>
+
         <div className={Styles.movieButtonContainer}>
           <PlayButton onClick={() => playButtonClick(movie)} />
           <div className={Styles.iconContainer}>
@@ -68,8 +69,8 @@ export const MovieDetail = ({movie, genres}) => {
           <div className={Styles.iconContainer}>
             <ThumbDownAltIcon className={Styles.importIcon} />
           </div>
-
         </div>
+
         <div className={Styles.movieFadeBottom}> </div>
         <div className={Styles.movieContainer}>
           <div className={Styles.movieLeftColumn}>
